@@ -1,30 +1,32 @@
-library("readxl")
-
+library(readxl)
 library(xtable)
 
-
+## Plot the prior and posterior density
 plotdens(n,y[1,],a,b,beta)
 
-## Bias vs Gelman-Rubin
-plot(data$Bias,data$`Gelman-Rubin`,xlab="Bias",ylab="CPSF")
-
-## Bias vs Interval
-plot(data$Bias,data$`Interval-based`,xlab="Bias",ylab="Interval-based PSF")
-
-## MSE vs Gelman-Rubin
-plot(data$MSE,data$`Gelman-Rubin`,xlab="MSE",ylab="CPSF")
-
-## MSE vs Interval
-plot(data$MSE,data$`Interval-based`,xlab="MSE",ylab="Interval-based PSF")
 
 
+## Read data
 data1 <- read_excel("result.xlsx", sheet = "2x1000")[,-1]
 data2 <- read_excel("result.xlsx", sheet = "4x400")[,-1]
 data3 <- read_excel("result.xlsx", sheet = "4x500")[,-1]
 data4 <- read_excel("result.xlsx", sheet = "6x100")[,-1]
 data5 <- read_excel("result.xlsx", sheet = "6x200")[,-1]
+data <- rbind(data1,data2,data3,data4,data5)
 
-## Data
+## Bias vs Gelman-Rubin
+plot(data$`average bias`,data$rhat1,xlab="Bias",ylab="CSRF")
+
+## Bias vs Interval
+plot(data$`average bias`,data$rhat2,xlab="Bias",ylab="Interval-based PSRF")
+
+## MSE vs Gelman-Rubin
+plot(data$`average mse`,data$rhat1,xlab="MSE",ylab="CSRF")
+
+## MSE vs Interval
+plot(data$`average mse`,data$rhat2,xlab="MSE",ylab="Interval-based PSRF")
+
+## Data simulated
 coln <- c()
 for(i in 1:10){
   coln <- c(coln,paste0("Dataset ",i))
