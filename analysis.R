@@ -17,10 +17,7 @@ for(k in 1:10){
   
   ## Summary
   perm <- performance(out,a,b,n,y[dsno,],beta)
-  
-  # (a+n)/(b+sum(y[dsno,]^beta))
-  # sqrt((a+n)/(b+sum(y[dsno,]^beta))^2)
-  
+    
   ## MCSE
   res <- matrix(NA,nrow=6,ncol=1000)
   for(i in 1:1000){
@@ -68,4 +65,4 @@ for(k in 1:10){
   }
   output[k,] <- temp
 }
-write.csv(output,"copy.csv")
+write.csv(output,"analysis.csv")
