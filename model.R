@@ -10,11 +10,10 @@ n <- 10
 beta <- 1.5
 theta <- 1
 y <- t(matrix(rweibull(n*10,beta,theta),ncol=n))
-# curve(dweibull(x,beta,theta),col="red", lwd=2, xlim=c(0,5), main="Likelihood Function")
 a <- 2
 b <- 2
 
-## Model
+## Running JAGS
 saveadd <- "simulation/6x190/"
 
 unittime <- matrix(0,nrow=10,ncol=1000)
@@ -36,4 +35,5 @@ for(i in 1:10){
 end.time0 <- Sys.time()
 time0 <- end.time0 - start.time0
 
+## Saving computation time
 write.csv(unittime,"simulation/6x190time.csv")
