@@ -15,16 +15,40 @@ data5 <- read_excel("result.xlsx", sheet = "6x200")[,-1]
 data <- rbind(data1,data2,data3,data4,data5)
 
 ## Bias vs Gelman-Rubin
-plot(data$`average bias`,data$rhat1,xlab="Bias",ylab="CSRF")
+plot(data4$`average bias`,data4$rhat1,xlab="Bias",ylab="CSRF",ylim=c(1.0015,1.006),pch=16)
+points(data1$`average bias`,data1$rhat1,col="red",pch=16)
+points(data2$`average bias`,data2$rhat1,col="blue",pch=16)
+points(data3$`average bias`,data3$rhat1,col="green",pch=16)
+points(data5$`average bias`,data5$rhat1,col="orange",pch=16)
+legend("right",legend = c("Design 1","Design 2","Design 3","Design 4","Design 5"), 
+       col=c("red","blue","green","black","orange"),pch=16,cex=0.8)
 
 ## Bias vs Interval
-plot(data$`average bias`,data$rhat2,xlab="Bias",ylab="Interval-based PSRF")
+plot(data4$`average bias`,data4$rhat2,xlab="Bias",ylab="Interval-based PSRF",ylim=c(0.9975,1.058),pch=16)
+points(data1$`average bias`,data1$rhat2,col="red",pch=16)
+points(data2$`average bias`,data2$rhat2,col="blue",pch=16)
+points(data3$`average bias`,data3$rhat2,col="green",pch=16)
+points(data5$`average bias`,data5$rhat2,col="orange",pch=16)
+legend("right",legend = c("Design 1","Design 2","Design 3","Design 4","Design 5"), 
+       col=c("red","blue","green","black","orange"),pch=16,cex=0.8)
 
 ## MSE vs Gelman-Rubin
-plot(data$`average mse`,data$rhat1,xlab="MSE",ylab="CSRF")
+plot(data4$`average mse`,data4$rhat1,xlab="MSE",ylab="CSRF",ylim=c(1.0015,1.006),pch=16)
+points(data1$`average mse`,data1$rhat1,col="red",pch=16)
+points(data2$`average mse`,data2$rhat1,col="blue",pch=16)
+points(data3$`average mse`,data3$rhat1,col="green",pch=16)
+points(data5$`average mse`,data5$rhat1,col="orange",pch=16)
+legend(x=0.19115,y=1.005,legend = c("Design 1","Design 2","Design 3","Design 4","Design 5"), 
+       col=c("red","blue","green","black","orange"),pch=16,cex=0.8)
 
 ## MSE vs Interval
-plot(data$`average mse`,data$rhat2,xlab="MSE",ylab="Interval-based PSRF")
+plot(data4$`average mse`,data4$rhat2,xlab="MSE",ylab="Interval-based PSRF",ylim=c(0.9975,1.058),pch=16)
+points(data1$`average mse`,data1$rhat2,col="red",pch=16)
+points(data2$`average mse`,data2$rhat2,col="blue",pch=16)
+points(data3$`average mse`,data3$rhat2,col="green",pch=16)
+points(data5$`average mse`,data5$rhat2,col="orange",pch=16)
+legend("right",legend = c("Design 1","Design 2","Design 3","Design 4","Design 5"), 
+       col=c("red","blue","green","black","orange"),pch=16,cex=0.8)
 
 ## Data simulated
 coln <- c()
